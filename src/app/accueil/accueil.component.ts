@@ -25,7 +25,7 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = this.routeActive.snapshot.paramMap.get('email');
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 100; index++) {
       this.tabRvs[index] = new RendezVous(
         faker.datatype.uuid(),
         faker.lorem.paragraph(),

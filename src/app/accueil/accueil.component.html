@@ -26,6 +26,7 @@
         <th scope="col">Lieu</th>
         <th scope="col">Date</th>
         <th scope="col">Image</th>
+        <th scope="col" colspan="2">Opérations</th>
       </tr>
     </thead>
     <tbody>
@@ -34,7 +35,9 @@
         <td>{{rv.desc}}</td>
         <td>{{rv.lieu}}</td>
         <td>{{rv.date}}</td>
-        <td><img src="{{rv.image}}" alt="" srcset=""></td>
+        <td><img src="{{rv.image}}" alt="" srcset="" style="color:red"></td>
+        <td>  <i class="fa fa-edit fa-sm" style="color:red"></i></td>
+        <td><i class="fa fa-trash fa-2xl" style="color:red"></i> </td>
       </tr>
     </tbody>
   </table>
