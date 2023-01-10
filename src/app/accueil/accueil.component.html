@@ -20,26 +20,27 @@
 
 <table class="table">
     <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Description</th>
-        <th scope="col">Lieu</th>
-        <th scope="col">Date</th>
-        <th scope="col">Image</th>
-        <th scope="col" colspan="2">Opérations</th>
-      </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Description</th>
+            <th scope="col">Lieu</th>
+            <th scope="col">Date</th>
+            <th scope="col">Image</th>
+            <th scope="col" colspan="2">Opérations</th>
+        </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let rv of tabRvs">
-        <th scope="row">{{rv.id}}</th>
-        <td>{{rv.desc}}</td>
-        <td>{{rv.lieu}}</td>
-        <td>{{rv.date}}</td>
-        <td><img src="{{rv.image}}" alt="" srcset="" style="color:red"></td>
-        <td>  <i class="fa fa-edit fa-3x" style="color:red"></i> <br>
-        <i class="fa fa-trash fa-3x" style="color:red"></i> </td>
+        <tr *ngFor="let rv of tabRvs">
+            <th scope="row">{{rv.id}}</th>
+            <td>{{rv.desc}}</td>
+            <td>{{rv.lieu}}</td>
+            <td>{{rv.date}}</td>
+            <td><img src="{{rv.image}}" alt="" srcset="" style="color:red"></td>
+            <td>
+                <i class="fa fa-edit fa-3x" style="color:red"></i> <br>
+                <i class="fa fa-trash fa-3x" style="color:red"></i>
+            </td>
 
-      </tr>
+        </tr>
     </tbody>
-  </table>
-  
+</table>
