@@ -8,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AccueilComponent implements OnInit {
   userName: string | null="";
+  nbr=0;  
+
+
   constructor(private routeActive:ActivatedRoute) { }
 
   ngOnInit(): void {
