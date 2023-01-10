@@ -16,7 +16,8 @@ export class AccueilComponent implements OnInit {
       faker.datatype.uuid(),
       'Rv chez le dentiste',
       'Dakar',
-      new Date('2023/11/11')
+      new Date('2023/11/11'),
+      faker.image.city(), 
     ),
   ];
 
@@ -29,7 +30,8 @@ export class AccueilComponent implements OnInit {
         faker.datatype.uuid(),
         faker.lorem.paragraph(),
         faker.address.city(),
-        faker.date.future() 
+        faker.date.future(),
+        faker.image.city(150, 150, true), 
       );
     }
     console.log(this.tabRvs[7]);

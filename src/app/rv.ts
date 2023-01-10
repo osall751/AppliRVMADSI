@@ -1,9 +1,16 @@
 export class RendezVous {
+  public get image(): string {
+    return this._image;
+  }
+  public set image(value: string) {
+    this._image = value;
+  }
   constructor(
     private _id: string,
     private _desc: string,
     private _lieu: string,
-    private _date: Date
+    private _date: Date,
+    private _image: string
   ) {}
   public get date(): Date {
     return this._date;
