@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RendezVous } from '../rv';
 import { faker } from '@faker-js/faker';
@@ -17,12 +17,18 @@ export class AccueilComponent implements OnInit {
       'Rv chez le dentiste',
       'Dakar',
       new Date('2023/11/11'),
-      faker.image.city(), 
+      faker.image.city()
     ),
   ];
 
   constructor(private routeActive: ActivatedRoute) {}
 
+  supprimer(id: string) {
+    this.tabRvs = this.tabRvs.filter((rv) => {
+      return rv.id != id;
+    });
+  }
+  
   ngOnInit(): void {
     this.userName = this.routeActive.snapshot.paramMap.get('email');
     for (let index = 0; index < 100; index++) {
@@ -31,7 +37,7 @@ export class AccueilComponent implements OnInit {
         faker.lorem.paragraph(),
         faker.address.city(),
         faker.date.future(),
-        faker.image.city(150, 150, true), 
+        faker.image.city(150, 150, true)
       );
     }
     console.log(this.tabRvs[7]);
