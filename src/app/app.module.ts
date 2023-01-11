@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MadsiRendezVousService } from './services/madsi-rendez-vous.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AccueilComponent } from './accueil/accueil.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [MadsiRendezVousService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RendezVous } from '../rv';
 import { faker } from '@faker-js/faker';
+import { MadsiRendezVousService } from '../services/madsi-rendez-vous.service';
 
 @Component({
   selector: 'app-accueil',
@@ -21,25 +22,14 @@ export class AccueilComponent implements OnInit {
     ),
   ];
 
-  constructor(private routeActive: ActivatedRoute) {}
+  constructor(private routeActive: ActivatedRoute, private rvService: MadsiRendezVousService) {}
 
   supprimer(id: string) {
-    this.tabRvs = this.tabRvs.filter((rv) => {
-      return rv.id != id;
-    });
+    this.tabRvs=this.rvService.supprimer(this.tabRvs, id);
   }
-  
+
   ngOnInit(): void {
     this.userName = this.routeActive.snapshot.paramMap.get('email');
-    for (let index = 0; index < 100; index++) {
-      this.tabRvs[index] = new RendezVous(
-        faker.datatype.uuid(),
-        faker.lorem.paragraph(),
-        faker.address.city(),
-        faker.date.future(),
-        faker.image.city(150, 150, true)
-      );
-    }
-    console.log(this.tabRvs[7]);
+    this.rvService.initialiserTabRV(this.tabRvs); 
   }
 }
