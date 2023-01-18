@@ -6,10 +6,19 @@ import { RendezVous } from '../rv';
   providedIn: 'root',
 })
 export class MadsiRendezVousService {
+  tabRvs = [
+    new RendezVous(
+      faker.datatype.uuid(),
+      'Rv chez le dentiste',
+      'Dakar',
+      new Date('2023/11/11'),
+      faker.image.city()
+    ),
+  ];
 
-  initialiserTabRV(tabRvs:any) {
+  initialiserTabRV() {
     for (let index = 0; index < 100; index++) {
-      tabRvs[index] = new RendezVous(
+      this.tabRvs[index] = new RendezVous(
         faker.datatype.uuid(),
         faker.lorem.paragraph(),
         faker.address.city(),
@@ -17,12 +26,13 @@ export class MadsiRendezVousService {
         faker.image.city(150, 150, true)
       );
     }
+    return this.tabRvs;
   }
-  supprimer(tabRvs:any, id: string) {
-    tabRvs = tabRvs.filter((rv: { id: string; }) => {
+  supprimer(id: string) {
+    this.tabRvs = this.tabRvs.filter((rv: { id: string; }) => {
       return rv.id != id;
     });
-    return tabRvs;
+    return this.tabRvs;
   }
 
   constructor() {}

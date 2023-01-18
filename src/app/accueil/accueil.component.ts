@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RendezVous } from '../rv';
 import { faker } from '@faker-js/faker';
 import { MadsiRendezVousService } from '../services/madsi-rendez-vous.service';
+import { MybackendServiceService } from '../services/mybackend-service.service';
 
 @Component({
   selector: 'app-accueil',
@@ -22,14 +23,35 @@ export class AccueilComponent implements OnInit {
     ),
   ];
 
-  constructor(private routeActive: ActivatedRoute, private rvService: MadsiRendezVousService) {}
+  constructor(
+    private router: Router,
+    private rvService: MadsiRendezVousService,
+    private mybackendServiceService: MybackendServiceService
+  ) {}
 
   supprimer(id: string) {
-    this.tabRvs=this.rvService.supprimer(this.tabRvs, id);
+    this.tabRvs = this.rvService.supprimer(id);
   }
 
-  ngOnInit(): void {
-    this.userName = this.routeActive.snapshot.paramMap.get('email');
-    this.rvService.initialiserTabRV(this.tabRvs); 
+  /**
+   * getAllRvs
+   */
+  public getAllRvs() {
+    this.mybackendServiceService.getAllRvs().subscribe(
+      (response: RendezVous[])=>{
+        this.tabRvs=response;
+        console.log(response.values);
+      }
+    );
+  }
+
+    ngOnInit(): void {
+    if (sessionStorage.getItem('email') !== null) {
+      this.userName = sessionStorage.getItem('email');
+      //this.tabRvs = this.rvService.initialiserTabRV();
+      this.getAllRvs();
+    } else {
+      this.router.navigateByUrl('');
+    }
   }
 }

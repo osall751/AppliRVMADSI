@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
   userLogin = 'osall@uvs.edu.sn';
   userPwd = '123456789';
   loginOk = true;
+name: any;
 
   constructor(private router: Router) {}
 
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   seLoguer() {
     if (this.userLogin.indexOf('@') != -1) {
       this.loginOk = true;
-      this.router.navigate(['accueil', this.userLogin]);
+      sessionStorage.setItem("email",this.userLogin)
+      this.router.navigate(['accueil']);
     } else {
       //alert('Le login saisie est incorrecte !!!');
       this.loginOk = false;

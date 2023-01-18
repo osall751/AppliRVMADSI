@@ -7,19 +7,23 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { MadsiRendezVousService } from './services/madsi-rendez-vous.service';
-
+import { ReversePipe } from './pipes/reverse.pipe';
+import { MybackendServiceService } from './services/mybackend-service.service';
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AccueilComponent
+    AccueilComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [MadsiRendezVousService],
+  providers: [MadsiRendezVousService, MybackendServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
